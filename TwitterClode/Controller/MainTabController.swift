@@ -15,14 +15,25 @@ class MainTabController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        view.backgroundColor = .white
+        
 
-        view.backgroundColor = .systemPink
+        configureViewControllers()
     }
     
     
     // MARK: - Helpers
     
     func configureViewControllers() {
+        let feed = FeedController()
+        let explore = ExploreController()
+        let notification = NotificationController()
+        let conversation = ConversationController()
+        
+        viewControllers = [feed, explore, notification, conversation]
+        
         
     }
 }
