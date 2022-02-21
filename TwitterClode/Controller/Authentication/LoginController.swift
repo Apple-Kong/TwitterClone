@@ -8,6 +8,8 @@
 import UIKit
 
 class LoginController: UIViewController {
+    
+    
     // MARK: - Properities
     
     private let logoImageView: UIImageView = {
@@ -18,36 +20,37 @@ class LoginController: UIViewController {
         return iv
     }()
     
+    
+    // MARK: 이하 두개의 뷰가 공통된 컴포넌트를 가지므로 static 한 UI 는 함수레벨로 복붙.
+    // 컨테이너뷰 1
     private lazy var emailContainerView: UIView = {
-        let view = UIView()
+        let image = UIImage(named: "ic_mail_outline_white_2x-1")!
+        let view = Utillities().inputContainerView(withImage: image,textFeild: emailTextFeild)
         
-        
-        view.backgroundColor = .red
-        view.snp.makeConstraints { make in
-            make.height.equalTo(50)
-        }
-        
-        let iv = UIImageView()
-        iv.image = UIImage(named: "mail")
-        iv.tintColor = .white
-        view.addSubview(iv)
-        iv.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.leading.equalToSuperview().offset(8)
-            make.size.equalTo(24)
-        }
         return view
     }()
     
+    // 컨테이너뷰 2
     private lazy var passwordContainerView: UIView = {
-        let view = UIView()
-        
-        view.backgroundColor = .systemPink
-        view.snp.makeConstraints { make in
-            make.height.equalTo(50)
-        }
+        let image = UIImage(named: "ic_lock_outline_white_2x")!
+        let view = Utillities().inputContainerView(withImage: image,textFeild: passwordTextFeild)
+
         return view
     }()
+    
+    
+    // MARK: textfield 와 같이 실제로 ViewController 와 상호작용해야하는 경우는 함수레벨 사용 불가..
+    private let emailTextFeild: UITextField = {
+        let tf = Utillities().textFeild(withPlaceHolder: "Email")
+        return tf
+    }()
+    
+    private let passwordTextFeild: UITextField = {
+        let tf = Utillities().textFeild(withPlaceHolder: "Password")
+        tf.isSecureTextEntry = true
+        return tf
+    }()
+    
     
     // MARK: - Lifecycle
     
@@ -67,7 +70,7 @@ class LoginController: UIViewController {
         view.addSubview(logoImageView)
         logoImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview()
+            make.top.equalToSuperview().offset(50)
             make.size.equalTo(150)
         }
         
@@ -79,7 +82,9 @@ class LoginController: UIViewController {
         view.addSubview(stack)
         stack.snp.makeConstraints { make in
             make.top.equalTo(logoImageView.snp.bottom)
-            make.leading.trailing.equalToSuperview()
+            
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(100)
         }
     }
