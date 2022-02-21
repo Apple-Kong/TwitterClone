@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C013CB9527C391C4009CAB28 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013CB9427C391C4009CAB28 /* UIColor.swift */; };
+		C013CB9827C398CB009CAB28 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013CB9727C398CB009CAB28 /* LoginController.swift */; };
+		C013CB9A27C3992F009CAB28 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013CB9927C3992F009CAB28 /* RegisterController.swift */; };
 		C089843427BE0ADB00B95025 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C089843327BE0ADB00B95025 /* AppDelegate.swift */; };
 		C089843627BE0ADB00B95025 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C089843527BE0ADB00B95025 /* SceneDelegate.swift */; };
 		C089843827BE0ADB00B95025 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C089843727BE0ADB00B95025 /* ViewController.swift */; };
@@ -20,6 +23,8 @@
 		C089847027BE0E0A00B95025 /* ConversationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C089846F27BE0E0A00B95025 /* ConversationController.swift */; };
 		C089847227BE0E8500B95025 /* ExploreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C089847127BE0E8500B95025 /* ExploreController.swift */; };
 		C089847427BE101100B95025 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C089847327BE101100B95025 /* Assets.xcassets */; };
+		C089847727BE2B8D00B95025 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C089847627BE2B8D00B95025 /* SnapKit */; };
+		C0D2156E27C3A4BF00434B6A /* Utillities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D2156D27C3A4BF00434B6A /* Utillities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +45,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C013CB9427C391C4009CAB28 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		C013CB9727C398CB009CAB28 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		C013CB9927C3992F009CAB28 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		C089843027BE0ADB00B95025 /* TwitterClode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterClode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C089843327BE0ADB00B95025 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C089843527BE0ADB00B95025 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +65,7 @@
 		C089846F27BE0E0A00B95025 /* ConversationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationController.swift; sourceTree = "<group>"; };
 		C089847127BE0E8500B95025 /* ExploreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreController.swift; sourceTree = "<group>"; };
 		C089847327BE101100B95025 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../Downloads/Assets.xcassets; sourceTree = "<group>"; };
+		C0D2156D27C3A4BF00434B6A /* Utillities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utillities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C089847727BE2B8D00B95025 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +94,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C013CB9627C398AF009CAB28 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				C013CB9727C398CB009CAB28 /* LoginController.swift */,
+				C013CB9927C3992F009CAB28 /* RegisterController.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
 		C089842727BE0ADB00B95025 = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +169,7 @@
 		C089846427BE0B2F00B95025 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				C013CB9627C398AF009CAB28 /* Authentication */,
 				C089846927BE0BD200B95025 /* MainTabController.swift */,
 				C089846B27BE0D4E00B95025 /* FeedController.swift */,
 				C089847127BE0E8500B95025 /* ExploreController.swift */,
@@ -183,8 +203,18 @@
 		C089846827BE0B5400B95025 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				C089847827BE2C4500B95025 /* Extensions */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		C089847827BE2C4500B95025 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C013CB9427C391C4009CAB28 /* UIColor.swift */,
+				C0D2156D27C3A4BF00434B6A /* Utillities.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,6 +233,9 @@
 			dependencies = (
 			);
 			name = TwitterClode;
+			packageProductDependencies = (
+				C089847627BE2B8D00B95025 /* SnapKit */,
+			);
 			productName = TwitterClode;
 			productReference = C089843027BE0ADB00B95025 /* TwitterClode.app */;
 			productType = "com.apple.product-type.application";
@@ -275,6 +308,9 @@
 				Base,
 			);
 			mainGroup = C089842727BE0ADB00B95025;
+			packageReferences = (
+				C089847527BE2B8D00B95025 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = C089843127BE0ADB00B95025 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -319,12 +355,16 @@
 			files = (
 				C089846E27BE0DFB00B95025 /* NotificationController.swift in Sources */,
 				C089843827BE0ADB00B95025 /* ViewController.swift in Sources */,
+				C013CB9A27C3992F009CAB28 /* RegisterController.swift in Sources */,
 				C089843427BE0ADB00B95025 /* AppDelegate.swift in Sources */,
 				C089846C27BE0D4E00B95025 /* FeedController.swift in Sources */,
+				C013CB9527C391C4009CAB28 /* UIColor.swift in Sources */,
 				C089846A27BE0BD200B95025 /* MainTabController.swift in Sources */,
+				C0D2156E27C3A4BF00434B6A /* Utillities.swift in Sources */,
 				C089847227BE0E8500B95025 /* ExploreController.swift in Sources */,
 				C089847027BE0E0A00B95025 /* ConversationController.swift in Sources */,
 				C089843627BE0ADB00B95025 /* SceneDelegate.swift in Sources */,
+				C013CB9827C398CB009CAB28 /* LoginController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +449,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -470,6 +511,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -680,6 +722,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C089847527BE2B8D00B95025 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C089847627BE2B8D00B95025 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C089847527BE2B8D00B95025 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C089842827BE0ADB00B95025 /* Project object */;
 }

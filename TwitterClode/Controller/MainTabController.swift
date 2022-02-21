@@ -6,10 +6,20 @@
 //
 
 import UIKit
+import SnapKit
 
 class MainTabController: UITabBarController {
     
     // MARK: - Properities
+    
+    let actionButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.tintColor = .white
+        button.backgroundColor = .twitterBlue
+        button.setImage(UIImage(named: "new_tweet"), for: .normal)
+        button.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
+        return button
+    }()
     
     // MARK: - lifeCycles
 
@@ -20,10 +30,28 @@ class MainTabController: UITabBarController {
         tabBar.backgroundColor = .white
         uiTabBarSetting()
         configureViewControllers()
+        configureUI()
+    }
+    // MARK: - Selectors
+    @objc func actionButtonTapped() {
+        print(123)
     }
     
     
     // MARK: - Helpers
+    
+    func configureUI() {
+        
+        view.addSubview(actionButton)
+        let buttonSize: CGFloat = 56
+        
+        actionButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().offset(-16)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-64)
+            make.height.width.equalTo(buttonSize)
+        }
+        actionButton.layer.cornerRadius = buttonSize / 2
+    }
     
     func configureViewControllers() {
         let feed = FeedController()
@@ -42,25 +70,26 @@ class MainTabController: UITabBarController {
     }
     
     
-// 좋은 프로그래머가 되기 위해서는 중복코드를 피해야한다.
-func templateNavigationController(image: UIImage?, rootViewController: UIViewController) -> UINavigationController {
-    
-    let nav = UINavigationController(rootViewController: rootViewController)
-    nav.tabBarItem.image = image
-    nav.navigationBar.barTintColor = .white
-    nav.navigationBar.backgroundColor = .white
-    
-    if #available(iOS 15.0, *) {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .white
-        nav.navigationBar.standardAppearance = appearance
-        nav.navigationBar.scrollEdgeAppearance = appearance
+    // 좋은 프로그래머가 되기 위해서는 중복코드를 피해야한다.
+    func templateNavigationController(image: UIImage?, rootViewController: UIViewController) -> UINavigationController {
+        
+        let nav = UINavigationController(rootViewController: rootViewController)
+        nav.tabBarItem.image = image
+        nav.navigationBar.barTintColor = .white
+        nav.navigationBar.backgroundColor = .white
+        
+        //변경된 네비게이션 바 외관 원래 것 사용하는 방법.
+        if #available(iOS 15.0, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = .white
+            nav.navigationBar.standardAppearance = appearance
+            nav.navigationBar.scrollEdgeAppearance = appearance
+            
+        }
+        return nav
         
     }
-    return nav
-    
-}
     
 
     
