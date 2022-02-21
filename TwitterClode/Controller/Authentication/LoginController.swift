@@ -26,7 +26,7 @@ class LoginController: UIViewController {
     private lazy var emailContainerView: UIView = {
         let image = UIImage(named: "ic_mail_outline_white_2x-1")!
         let view = Utillities().inputContainerView(withImage: image,textFeild: emailTextFeild)
-        
+     
         return view
     }()
     
@@ -51,6 +51,24 @@ class LoginController: UIViewController {
         return tf
     }()
     
+    private let loginButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Log In", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
+        button.setTitleColor(UIColor.twitterBlue, for: .normal)
+        button.backgroundColor = .white
+        button.layer.cornerRadius = 5
+        button.addTarget(self , action: #selector(handleLogin), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    private let signUpButton: UIButton = {
+        let button = Utillities().attributedButton("Don't have an account?", " Sign Up")
+        
+        return button
+    }()
+    
     
     // MARK: - Lifecycle
     
@@ -59,6 +77,10 @@ class LoginController: UIViewController {
         configureUI()
     }
     // MARK: - Selectors
+    
+    @objc func handleLogin() {
+        
+    }
     
     // MARK: - Helpers
     
@@ -76,16 +98,30 @@ class LoginController: UIViewController {
         
         let stack = UIStackView(arrangedSubviews: [emailContainerView, passwordContainerView])
         stack.axis = .vertical
-        stack.distribution = .fillEqually
-        stack.spacing = 8
+        stack.spacing = 40
         
         view.addSubview(stack)
         stack.snp.makeConstraints { make in
             make.top.equalTo(logoImageView.snp.bottom)
             
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
-            make.height.equalTo(100)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+            make.height.equalTo(130)
+        }
+        
+        view.addSubview(loginButton)
+       
+        loginButton.snp.makeConstraints { make in
+            make.leading.trailing.equalTo(stack)
+            make.top.equalTo(stack.snp.bottom).offset(20)
+            make.height.equalTo(50)
+        }
+        
+        
+        view.addSubview(signUpButton)
+        signUpButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-40)
         }
     }
 }

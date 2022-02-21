@@ -12,7 +12,10 @@ import SnapKit
 class Utillities {
     func inputContainerView(withImage image: UIImage, textFeild: UITextField) -> UIView {
         let view = UIView()
- 
+        
+        view.snp.makeConstraints { make in
+            make.height.equalTo(50)
+        }
         
         let iv = UIImageView()
        
@@ -57,5 +60,15 @@ class Utillities {
         tf.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         return tf
         
+    }
+    
+    func attributedButton(_ firstPart: String, _ secondPart: String) -> UIButton{
+        let button = UIButton(type: .system)
+        
+        let attributedTitle = NSMutableAttributedString(string: firstPart, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16), NSAttributedString.Key.foregroundColor: UIColor.white])
+        attributedTitle.append(NSAttributedString(string: secondPart, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 16), NSAttributedString.Key.foregroundColor : UIColor.white]))
+        
+        button.setAttributedTitle(attributedTitle, for: .normal)
+        return button
     }
 }
