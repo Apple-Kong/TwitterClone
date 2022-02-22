@@ -120,22 +120,27 @@ class RegisterController: UIViewController {
         let storageRef = STORAGE.PROFILE_IMAGES.child(filename)
         
         
-        
-        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-            if let error = error {
-                print("DEBUG: Error is \(error.localizedDescription) ")
-                return
-            } else {
-                
-                guard let uid = result?.user.uid else { return }
+        storageRef.putData(imageData, metadata: nil) { meta, error in
+            storageRef.downloadURL { url, error in
+                guard let profileImageUrl = url?.absoluteString else { return }
                 
                 
-                let values = ["email" : email, "username": userName, "fullname": fullName]
                 
-                //url 을 따로 따서 적어 놓을 것.
-                DB.REF_UESERS.updateChildValues(values) {
-                    (error, ref) in
-                    print("DEBUG: successfully updated user info")
+                Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+                    if let error = error {
+                        print("DEBUG: Error is \(error.localizedDescription) ")
+                        return
+                    } else {
+                        
+                        guard let uid = result?.user.uid else { return }
+                        let values = ["email" : email, "username": userName, "fullname": fullName, "profileImageUrl" : profileImageUrl]
+                        
+                        //url 을 따로 따서 적어 놓을 것.
+                        DB.REF_UESERS.child(uid).updateChildValues(values) {
+                            (error, ref) in
+                            print("DEBUG: successfully updated user info")
+                        }
+                    }
                 }
             }
         }

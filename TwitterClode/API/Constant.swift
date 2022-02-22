@@ -12,7 +12,7 @@ import FirebaseStorage
 class DB {
     static let URL = "https://twitterclone-3af3c-default-rtdb.asia-southeast1.firebasedatabase.app"
     static let REF = Database.database(url: DB.URL).reference()
-    static let REF_UESERS = DB.REF.child("users").child(uid)
+    static let REF_UESERS = DB.REF.child("users")
 }
 
 class STORAGE {
