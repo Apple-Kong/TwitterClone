@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class RegisterController: UIViewController {
     // MARK: - Properities
@@ -102,7 +103,19 @@ class RegisterController: UIViewController {
     }
     // MARK: - Selectors
     @objc func handleSignUP() {
-        print("sign up")
+        guard let email = emailTextFeild.text else { return }
+        guard let password = passwordTextFeild.text else { return }
+        guard let fullName = fullNameTextFeild.text else { return }
+        guard let userName = userNameTextFeild.text else { return }
+        
+        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+            if let error = error {
+                print("DEBUG: Error is \(error.localizedDescription) ")
+                return
+            } else {
+                print("DEBUG: Successfully registered user")
+            }
+        }
     }
     @objc func handleAddProfilePhoto() {
         
