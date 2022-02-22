@@ -12,6 +12,7 @@
 		C000B08127C4AB63003F01D9 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C000B08027C4AB63003F01D9 /* FirebaseAuth */; };
 		C000B08327C4AB63003F01D9 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = C000B08227C4AB63003F01D9 /* FirebaseDatabase */; };
 		C000B08527C4AB63003F01D9 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = C000B08427C4AB63003F01D9 /* FirebaseStorage */; };
+		C000B08727C4CC68003F01D9 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C000B08627C4CC68003F01D9 /* Constant.swift */; };
 		C013CB9527C391C4009CAB28 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013CB9427C391C4009CAB28 /* UIColor.swift */; };
 		C013CB9827C398CB009CAB28 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013CB9727C398CB009CAB28 /* LoginController.swift */; };
 		C013CB9A27C3992F009CAB28 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013CB9927C3992F009CAB28 /* RegisterController.swift */; };
@@ -51,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		C000B07B27C4AA76003F01D9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C000B08627C4CC68003F01D9 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		C013CB9427C391C4009CAB28 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		C013CB9727C398CB009CAB28 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		C013CB9927C3992F009CAB28 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 		C089846327BE0B0400B95025 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				C000B08627C4CC68003F01D9 /* Constant.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				C089846A27BE0BD200B95025 /* MainTabController.swift in Sources */,
 				C0D2156E27C3A4BF00434B6A /* Utillities.swift in Sources */,
 				C089847227BE0E8500B95025 /* ExploreController.swift in Sources */,
+				C000B08727C4CC68003F01D9 /* Constant.swift in Sources */,
 				C089847027BE0E0A00B95025 /* ConversationController.swift in Sources */,
 				C089843627BE0ADB00B95025 /* SceneDelegate.swift in Sources */,
 				C013CB9827C398CB009CAB28 /* LoginController.swift in Sources */,

@@ -7,12 +7,14 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class RegisterController: UIViewController {
     // MARK: - Properities
     
     
     private let imagePicker = UIImagePickerController()
+    private var profileImage: UIImage? = nil
     
     private let plusPhotoButton: UIButton = {
         let button = UIButton(type: .system)
@@ -103,6 +105,10 @@ class RegisterController: UIViewController {
     }
     // MARK: - Selectors
     @objc func handleSignUP() {
+        guard let profileImage = profileImage else {
+            print("DEBUG: Please select a profile image...")
+            return
+        }
         guard let email = emailTextFeild.text else { return }
         guard let password = passwordTextFeild.text else { return }
         guard let fullName = fullNameTextFeild.text else { return }
@@ -113,7 +119,17 @@ class RegisterController: UIViewController {
                 print("DEBUG: Error is \(error.localizedDescription) ")
                 return
             } else {
-                print("DEBUG: Successfully registered user")
+                
+                guard let uid = result?.user.uid else { return }
+                
+                
+                let values = ["email" : email, "username": userName, "fullname": fullName]
+                
+                //url 을 따로 따서 적어 놓을 것.
+                DB_REF_UESERS.updateChildValues(values) {
+                    (error, ref) in
+                    print("DEBUG: successfully updated user info")
+                }
             }
         }
     }
@@ -177,6 +193,7 @@ class RegisterController: UIViewController {
 extension RegisterController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let profileImage = info[.editedImage] as? UIImage else { return }
+        self.profileImage = profileImage
         self.plusPhotoButton.setImage(profileImage.withRenderingMode(.alwaysOriginal), for: .normal)
         
         plusPhotoButton.layer.cornerRadius = 128 / 2
