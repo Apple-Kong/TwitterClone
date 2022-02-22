@@ -65,7 +65,7 @@ class LoginController: UIViewController {
     
     private let signUpButton: UIButton = {
         let button = Utillities().attributedButton("Don't have an account?", " Sign Up")
-        
+        button.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
         return button
     }()
     
@@ -77,7 +77,10 @@ class LoginController: UIViewController {
         configureUI()
     }
     // MARK: - Selectors
-    
+    @objc func handleShowSignUp() {
+        let controller = RegisterController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
     @objc func handleLogin() {
         
     }
@@ -98,7 +101,7 @@ class LoginController: UIViewController {
         
         let stack = UIStackView(arrangedSubviews: [emailContainerView, passwordContainerView])
         stack.axis = .vertical
-        stack.spacing = 40
+        stack.spacing = 30
         
         view.addSubview(stack)
         stack.snp.makeConstraints { make in

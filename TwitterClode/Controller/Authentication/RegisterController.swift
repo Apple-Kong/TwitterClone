@@ -9,6 +9,91 @@ import UIKit
 
 class RegisterController: UIViewController {
     // MARK: - Properities
+    
+    
+    private let imagePicker = UIImagePickerController()
+    
+    private let plusPhotoButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "plus_photo"), for: .normal)
+        
+        button.tintColor = .white
+        button.addTarget(self, action: #selector(handleAddProfilePhoto), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var emailContainerView: UIView = {
+        let image = UIImage(named: "ic_mail_outline_white_2x-1")!
+        let view = Utillities().inputContainerView(withImage: image,textFeild: emailTextFeild)
+     
+        return view
+    }()
+    
+    private lazy var passwordContainerView: UIView = {
+        let image = UIImage(named: "ic_lock_outline_white_2x")!
+        let view = Utillities().inputContainerView(withImage: image,textFeild: passwordTextFeild)
+
+        return view
+    }()
+    
+    private lazy var fullNameContainerView: UIView = {
+        let image = UIImage(named: "ic_person_outline_white_2x")!
+        let view = Utillities().inputContainerView(withImage: image,textFeild: fullNameTextFeild)
+     
+        return view
+    }()
+    
+    private lazy var userNameContainerView: UIView = {
+        let image = UIImage(named: "ic_person_outline_white_2x")!
+        let view = Utillities().inputContainerView(withImage: image,textFeild: userNameTextFeild)
+     
+        return view
+    }()
+    
+    private let emailTextFeild: UITextField = {
+        let tf = Utillities().textFeild(withPlaceHolder: "Email")
+        return tf
+    }()
+    
+    private let passwordTextFeild: UITextField = {
+        let tf = Utillities().textFeild(withPlaceHolder: "Password")
+        tf.isSecureTextEntry = true
+        return tf
+    }()
+    
+    private let fullNameTextFeild: UITextField = {
+        let tf = Utillities().textFeild(withPlaceHolder: "Full Name")
+        return tf
+    }()
+    
+    private let userNameTextFeild: UITextField = {
+        let tf = Utillities().textFeild(withPlaceHolder: "UserName")
+        return tf
+    }()
+    
+    
+    private let signUpButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Sign Up", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
+        button.setTitleColor(UIColor.twitterBlue, for: .normal)
+        button.backgroundColor = .white
+        button.layer.cornerRadius = 5
+        button.addTarget(self , action: #selector(handleSignUP), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    
+    
+    private let alreadyHaveAccountButton: UIButton = {
+        let button = Utillities().attributedButton("Already have an account?", " Log In")
+        button.addTarget(self, action: #selector(handleShowLogin), for: .touchUpInside)
+        return button
+    }()
+    
+    
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -16,14 +101,81 @@ class RegisterController: UIViewController {
         configureUI()
     }
     // MARK: - Selectors
+    @objc func handleSignUP() {
+        print("sign up")
+    }
+    @objc func handleAddProfilePhoto() {
+        
+        present(imagePicker, animated: true) {
+            
+        }
+    }
+    
+    
+    @objc func handleShowLogin() {
+        self.navigationController?.popViewController(animated: true)
+    }
     // MARK: - Helpers
     
     func configureUI() {
         view.backgroundColor = .twitterBlue
+        
+        
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        
+        view.addSubview(plusPhotoButton)
+        plusPhotoButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().offset(40)
+            make.size.equalTo(128)
+        }
+        
+        let stack = UIStackView(arrangedSubviews: [emailContainerView, passwordContainerView, fullNameContainerView, userNameContainerView])
+        stack.axis = .vertical
+        stack.spacing = 20
+        
+        view.addSubview(stack)
+        stack.snp.makeConstraints { make in
+            make.top.equalTo(plusPhotoButton.snp.bottom)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+            make.height.equalTo(260)
+        }
+        
+        view.addSubview(signUpButton)
+        signUpButton.snp.makeConstraints { make in
+            make.leading.trailing.equalTo(stack)
+            make.top.equalTo(stack.snp.bottom).offset(20)
+            make.height.equalTo(50)
+        }
+        
+        view.addSubview(alreadyHaveAccountButton)
+        alreadyHaveAccountButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-40)
+        }
     }
     
 }
 
+// MARK: - UIImagePickerControllerDelegate
+
+extension RegisterController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let profileImage = info[.editedImage] as? UIImage else { return }
+        self.plusPhotoButton.setImage(profileImage.withRenderingMode(.alwaysOriginal), for: .normal)
+        
+        plusPhotoButton.layer.cornerRadius = 128 / 2
+        plusPhotoButton.layer.masksToBounds = true
+        plusPhotoButton.imageView?.contentMode = .scaleAspectFill
+        plusPhotoButton.imageView?.clipsToBounds = true
+        plusPhotoButton.layer.borderColor = UIColor.white.cgColor
+        plusPhotoButton.layer.borderWidth = 3
+        dismiss(animated: true, completion: nil)
+                
+    }
+}
 
 
 
