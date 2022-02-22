@@ -5,10 +5,17 @@
 //  Created by GOngTAE on 2022/02/22.
 //
 
-import Foundation
+import Firebase
 import FirebaseDatabase
+import FirebaseStorage
 
+class DB {
+    static let URL = "https://twitterclone-3af3c-default-rtdb.asia-southeast1.firebasedatabase.app"
+    static let REF = Database.database(url: DB.URL).reference()
+    static let REF_UESERS = DB.REF.child("users").child(uid)
+}
 
-let FIREBASE_DATABASE_URL = "https://twitterclone-3af3c-default-rtdb.asia-southeast1.firebasedatabase.app"
-let DB_REF = Database.database(url: FIREBASE_DATABASE_URL).reference()
-let DB_REF_UESERS = DB_REF.child("users").child(uid)
+class STORAGE {
+    static let REF = Storage.storage(url: "gs://twitterclone-3af3c.appspot.com/").reference()
+    static let PROFILE_IMAGES = STORAGE.REF.child("profile_images")
+}
