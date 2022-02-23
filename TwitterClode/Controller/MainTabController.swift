@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import FirebaseAuth
 
 class MainTabController: UITabBarController {
     
@@ -25,13 +26,39 @@ class MainTabController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        tabBar.backgroundColor = .white
-        uiTabBarSetting()
-        configureViewControllers()
-        configureUI()
+
+        authenticateUserAndConfigureUI()
     }
+    // MARK: - API
+    
+    func authenticateUserAndConfigureUI() {
+        if Auth.auth().currentUser == nil {
+            DispatchQueue.main.async {
+                // 루트 컨트롤러 위에 컨트롤러를 띄울 때에는 main 스레드를 활용
+                let nav = UINavigationController(rootViewController: LoginController())
+                nav.modalPresentationStyle = .fullScreen
+                self.present(nav, animated: true, completion: nil)
+            }
+        } else {
+            print("DEBUG: User is logged in..")
+            // 로그인 되기 전에는 UI 구성하지 않도록 하는 것이 바람직함.
+            
+            tabBar.backgroundColor = .white
+            uiTabBarSetting()
+            configureViewControllers()
+            configureUI()
+            
+        }
+    }
+    
+    func logUserOut() {
+        do {
+            try Auth.auth().signOut()
+        } catch let error {
+            print("DEBUG: Failed to sign out with error \(error.localizedDescription)")
+        }
+    }
+    
     // MARK: - Selectors
     @objc func actionButtonTapped() {
         print(123)
