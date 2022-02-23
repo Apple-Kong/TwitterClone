@@ -90,12 +90,19 @@ class LoginController: UIViewController {
                 print("DEBUG: Error logging in \(error.localizedDescription)")
                 return
             } else {
-                print("DEBUG: Successful log in")
+                self.goBackToMain()
             }
         }
     }
     
     // MARK: - Helpers
+    
+    func goBackToMain() {
+        guard let window =  UIApplication.shared.windows.first(where: {$0.isKeyWindow}) else { return }
+        guard let main = window.rootViewController as? MainTabController else { return }
+        main.authenticateUserAndConfigureUI()
+        self.dismiss(animated: true, completion: nil)
+    }
     
     func configureUI() {
         view.backgroundColor = .twitterBlue

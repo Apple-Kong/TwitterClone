@@ -121,6 +121,7 @@ class RegisterController: UIViewController {
                 print("DEBUG: \(error.localizedDescription)")
             } else {
                 print("DEBUG: Sign up successful")
+                self.goBackToMain()
             }
         }
     }
@@ -136,6 +137,13 @@ class RegisterController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     // MARK: - Helpers
+    
+    func goBackToMain() {
+        guard let window =  UIApplication.shared.windows.first(where: {$0.isKeyWindow}) else { return }
+        guard let main = window.rootViewController as? MainTabController else { return }
+        main.authenticateUserAndConfigureUI()
+        self.dismiss(animated: true, completion: nil)
+    }
     
     func configureUI() {
         view.backgroundColor = .twitterBlue
