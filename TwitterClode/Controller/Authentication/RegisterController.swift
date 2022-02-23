@@ -114,34 +114,13 @@ class RegisterController: UIViewController {
         guard let fullName = fullNameTextFeild.text else { return }
         guard let userName = userNameTextFeild.text else { return }
         
+        let credentials = AuthCredentials(email: email, password: password, fullName: fullName, userName: userName, profileImage: profileImage)
         
-        guard let imageData = profileImage.jpegData(compressionQuality: 0.3) else { return }
-        let filename = NSUUID().uuidString
-        let storageRef = STORAGE.PROFILE_IMAGES.child(filename)
-        
-        
-        storageRef.putData(imageData, metadata: nil) { meta, error in
-            storageRef.downloadURL { url, error in
-                guard let profileImageUrl = url?.absoluteString else { return }
-                
-                
-                
-                Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-                    if let error = error {
-                        print("DEBUG: Error is \(error.localizedDescription) ")
-                        return
-                    } else {
-                        
-                        guard let uid = result?.user.uid else { return }
-                        let values = ["email" : email, "username": userName, "fullname": fullName, "profileImageUrl" : profileImageUrl]
-                        
-                        //url 을 따로 따서 적어 놓을 것.
-                        DB.REF_UESERS.child(uid).updateChildValues(values) {
-                            (error, ref) in
-                            print("DEBUG: successfully updated user info")
-                        }
-                    }
-                }
+        AuthService.shared.registerUser(credentials: credentials) { error, ref in
+            if let error = error {
+                print("DEBUG: \(error.localizedDescription)")
+            } else {
+                print("DEBUG: Sign up successful")
             }
         }
     }
@@ -196,6 +175,10 @@ class RegisterController: UIViewController {
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview().offset(-40)
         }
+        
+        
+
+        
     }
     
 }
