@@ -64,7 +64,16 @@ class UploadTweetController: UIViewController {
     }
     // MARK: - Selectors
     @objc func handleUploadTweet() {
-        print("DEBUG: upload tweet....")
+        guard let caption = captionTextView.text else {return}
+        TweetService.shared.uploadTweet(caption: caption) { error, ref in
+            if let error = error {
+                print("DEBUG: upload fail \(error.localizedDescription)")
+                return
+            } else {
+                print("DEBUG: Tweet did uploaded successfully")
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     @objc func handeCancel() {
         self.dismiss(animated: true, completion: nil)
