@@ -7,6 +7,7 @@
 
 
 import UIKit
+import SnapKit
 
 class FeedController: UIViewController {
     // MARK: - Properities
@@ -28,6 +29,15 @@ class FeedController: UIViewController {
         let imageView = UIImageView(image: UIImage(named: "twitter_logo_blue"))
         imageView.contentMode = .scaleAspectFit
         navigationItem.titleView = imageView
+        
+        let profileImageView = UIImageView()
+        profileImageView.backgroundColor = .twitterBlue
+        profileImageView.snp.makeConstraints { make in
+            make.size.equalTo(32)
+        }
+        profileImageView.layer.cornerRadius = 32 / 2
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileImageView)
     }
 }
 

@@ -16,6 +16,8 @@
 		C013CB9527C391C4009CAB28 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013CB9427C391C4009CAB28 /* UIColor.swift */; };
 		C013CB9827C398CB009CAB28 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013CB9727C398CB009CAB28 /* LoginController.swift */; };
 		C013CB9A27C3992F009CAB28 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013CB9927C3992F009CAB28 /* RegisterController.swift */; };
+		C04F344127C7649B0063DAA8 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04F344027C7649B0063DAA8 /* UserService.swift */; };
+		C04F344327C769050063DAA8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04F344227C769050063DAA8 /* User.swift */; };
 		C07A83D327C5FC6F00B79EDF /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A83D227C5FC6E00B79EDF /* AuthService.swift */; };
 		C089843427BE0ADB00B95025 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C089843327BE0ADB00B95025 /* AppDelegate.swift */; };
 		C089843627BE0ADB00B95025 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C089843527BE0ADB00B95025 /* SceneDelegate.swift */; };
@@ -57,6 +59,8 @@
 		C013CB9427C391C4009CAB28 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		C013CB9727C398CB009CAB28 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		C013CB9927C3992F009CAB28 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
+		C04F344027C7649B0063DAA8 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		C04F344227C769050063DAA8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C07A83D227C5FC6E00B79EDF /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		C089843027BE0ADB00B95025 /* TwitterClode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterClode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C089843327BE0ADB00B95025 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -179,6 +183,7 @@
 			children = (
 				C000B08627C4CC68003F01D9 /* Constant.swift */,
 				C07A83D227C5FC6E00B79EDF /* AuthService.swift */,
+				C04F344027C7649B0063DAA8 /* UserService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -213,6 +218,7 @@
 		C089846727BE0B3600B95025 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C04F344227C769050063DAA8 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -380,6 +386,7 @@
 				C089843827BE0ADB00B95025 /* ViewController.swift in Sources */,
 				C013CB9A27C3992F009CAB28 /* RegisterController.swift in Sources */,
 				C089843427BE0ADB00B95025 /* AppDelegate.swift in Sources */,
+				C04F344327C769050063DAA8 /* User.swift in Sources */,
 				C089846C27BE0D4E00B95025 /* FeedController.swift in Sources */,
 				C013CB9527C391C4009CAB28 /* UIColor.swift in Sources */,
 				C089846A27BE0BD200B95025 /* MainTabController.swift in Sources */,
@@ -387,6 +394,7 @@
 				C089847227BE0E8500B95025 /* ExploreController.swift in Sources */,
 				C000B08727C4CC68003F01D9 /* Constant.swift in Sources */,
 				C089847027BE0E0A00B95025 /* ConversationController.swift in Sources */,
+				C04F344127C7649B0063DAA8 /* UserService.swift in Sources */,
 				C089843627BE0ADB00B95025 /* SceneDelegate.swift in Sources */,
 				C013CB9827C398CB009CAB28 /* LoginController.swift in Sources */,
 				C07A83D327C5FC6F00B79EDF /* AuthService.swift in Sources */,
