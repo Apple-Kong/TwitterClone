@@ -42,6 +42,10 @@ class UploadTweetController: UIViewController {
         iv.layer.cornerRadius = 48 / 2
         return iv
     }()
+    
+    
+    private let captionTextView = CaptionTextView()
+    
     // MARK: - LifeCycles
     
     init(user: User) {
@@ -71,12 +75,22 @@ class UploadTweetController: UIViewController {
         view.backgroundColor = .white
         configureNavigationBar()
         
-        view.addSubview(profileImageView)
+        
+        
+        
+        
+        let stack = UIStackView(arrangedSubviews: [profileImageView, captionTextView])
+        stack.axis = .horizontal
+        stack.spacing = 12
+        
+        
+        view.addSubview(stack)
         //같은 url 에대한 이미지를 캐싱해서 > 같은 url 에 대한 이미지 요청시 캐싱된 이미지를 불러와 설정하게 됨.
         //추가적인 API 호출이 필요없음.
         profileImageView.sd_setImage(with: user.profileImageUrl, completed: nil)
-        profileImageView.snp.makeConstraints { make in
+        stack.snp.makeConstraints { make in
             make.top.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
         }
     }
     
