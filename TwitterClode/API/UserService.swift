@@ -11,7 +11,7 @@ import FirebaseAuth
 struct UserService {
     static let shared = UserService()
     
-    func fetchUser() {
+    func fetchUser(completion: @escaping (User) -> Void) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
         DB.REF_UESERS.child(uid).observeSingleEvent(of: .value) { snapshot in
@@ -22,8 +22,7 @@ struct UserService {
             
             let user = User(uid: uid, dictionary: dic)
             
-            print("DEBUG: Username is \(user.username)")
-            print("DEBUG: Username is \(user.fullname)")
+            completion(user)
         }
     }
 }

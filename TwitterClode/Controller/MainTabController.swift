@@ -12,6 +12,17 @@ import FirebaseAuth
 class MainTabController: UITabBarController {
     
     // MARK: - Properities
+    //프로퍼티가 값이 할당 되었을 때 무조건 실행되어야하는 코드들은 didSet 적극활용.
+    //네트워크요청이 언제 완료될지 모르기 때문에 didSet 활용하면 좋다.
+    var user: User? {
+        didSet {
+            //viewControllers[0] 은 feedController 가 속해있는 네비게이션 컨트롤러
+            guard let nav = viewControllers?[0] as? UINavigationController else {return}
+            // nav.viewControllers.first 는 해당 네비게이션 컨트롤러가 보여주는 첫화면
+            guard let feed = nav.viewControllers.first as? FeedController else {return}
+            feed.user = user
+        }
+    }
     
     let actionButton: UIButton = {
         let button = UIButton(type: .system)
@@ -33,7 +44,9 @@ class MainTabController: UITabBarController {
     // MARK: - API
     
     func fetchUser() {
-        UserService.shared.fetchUser()
+        UserService.shared.fetchUser { user in
+            self.user = user
+        }
     }
     
     func authenticateUserAndConfigureUI() {
@@ -67,7 +80,13 @@ class MainTabController: UITabBarController {
     
     // MARK: - Selectors
     @objc func actionButtonTapped() {
-        print(123)
+        guard let user = user else {
+            return
+        }
+        
+        let nav = templateNavigationController(image: nil, rootViewController: UploadTweetController(user: user))
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true, completion: nil)
     }
     
     

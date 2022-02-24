@@ -8,9 +8,17 @@
 
 import UIKit
 import SnapKit
+import SDWebImage
 
 class FeedController: UIViewController {
     // MARK: - Properities
+    
+    var user: User? {
+        didSet {
+            configureLeftBarButton()
+        }
+    }
+    
     
     // MARK: - lifeCycles
 
@@ -20,6 +28,9 @@ class FeedController: UIViewController {
         
     }
     
+    // MARK: - API
+    
+    
     
     // MARK: - Helpers
     
@@ -28,15 +39,25 @@ class FeedController: UIViewController {
         
         let imageView = UIImageView(image: UIImage(named: "twitter_logo_blue"))
         imageView.contentMode = .scaleAspectFit
+        imageView.snp.makeConstraints { make in
+            make.size.equalTo(44)
+        }
         navigationItem.titleView = imageView
+    }
+    
+    func configureLeftBarButton() {
+        guard let user = user else { return }
         
         let profileImageView = UIImageView()
         profileImageView.backgroundColor = .twitterBlue
         profileImageView.snp.makeConstraints { make in
             make.size.equalTo(32)
         }
-        profileImageView.layer.cornerRadius = 32 / 2
         
+        profileImageView.layer.cornerRadius = 32 / 2
+        profileImageView.layer.masksToBounds = true
+        
+        profileImageView.sd_setImage(with: user.profileImageUrl, completed: nil)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileImageView)
     }
 }
