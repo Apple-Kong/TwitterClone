@@ -17,6 +17,7 @@ class UploadTweetController: UIViewController {
     
     //lazy 를 써야 addtarget 이 제대로 작동함.
     private lazy var actionButton: UIButton = {
+        
         let button = UIButton(type: .system)
         button.backgroundColor = .twitterBlue
         button.setTitle("Tweet", for: .normal)
@@ -43,7 +44,6 @@ class UploadTweetController: UIViewController {
         return iv
     }()
     
-    
     private let captionTextView = CaptionTextView()
     
     // MARK: - LifeCycles
@@ -53,16 +53,20 @@ class UploadTweetController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        
     }
+    
+    
     // MARK: - Selectors
+    
     @objc func handleUploadTweet() {
         guard let caption = captionTextView.text else {return}
         TweetService.shared.uploadTweet(caption: caption) { error, ref in
@@ -75,23 +79,21 @@ class UploadTweetController: UIViewController {
             }
         }
     }
+    
     @objc func handeCancel() {
         self.dismiss(animated: true, completion: nil)
     }
+    
     // MARK: - Helpers
     
     func configureUI() {
         view.backgroundColor = .white
         configureNavigationBar()
-        
-        
-        
-        
+
         
         let stack = UIStackView(arrangedSubviews: [profileImageView, captionTextView])
         stack.axis = .horizontal
         stack.spacing = 12
-        
         
         view.addSubview(stack)
         //같은 url 에대한 이미지를 캐싱해서 > 같은 url 에 대한 이미지 요청시 캐싱된 이미지를 불러와 설정하게 됨.
@@ -109,5 +111,6 @@ class UploadTweetController: UIViewController {
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(handeCancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: actionButton)
+        
     }
 }

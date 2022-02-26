@@ -38,6 +38,7 @@
 		C089847427BE101100B95025 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C089847327BE101100B95025 /* Assets.xcassets */; };
 		C089847727BE2B8D00B95025 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C089847627BE2B8D00B95025 /* SnapKit */; };
 		C0D2156E27C3A4BF00434B6A /* Utillities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D2156D27C3A4BF00434B6A /* Utillities.swift */; };
+		C0EFC0BF27CA705400DB1505 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EFC0BE27CA705400DB1505 /* Tweet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		C089847127BE0E8500B95025 /* ExploreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreController.swift; sourceTree = "<group>"; };
 		C089847327BE101100B95025 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../Downloads/Assets.xcassets; sourceTree = "<group>"; };
 		C0D2156D27C3A4BF00434B6A /* Utillities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utillities.swift; sourceTree = "<group>"; };
+		C0EFC0BE27CA705400DB1505 /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				C04F344227C769050063DAA8 /* User.swift */,
+				C0EFC0BE27CA705400DB1505 /* Tweet.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				C089846C27BE0D4E00B95025 /* FeedController.swift in Sources */,
 				C013CB9527C391C4009CAB28 /* UIColor.swift in Sources */,
 				C089846A27BE0BD200B95025 /* MainTabController.swift in Sources */,
+				C0EFC0BF27CA705400DB1505 /* Tweet.swift in Sources */,
 				C0D2156E27C3A4BF00434B6A /* Utillities.swift in Sources */,
 				C089847227BE0E8500B95025 /* ExploreController.swift in Sources */,
 				C000B08727C4CC68003F01D9 /* Constant.swift in Sources */,

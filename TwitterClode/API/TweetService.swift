@@ -24,4 +24,22 @@ struct TweetService {
         DB.REF_TWEETS.childByAutoId().updateChildValues(values, withCompletionBlock: completion)
         
     }
+    
+    
+    func fetchTweets(completion: @escaping ([Tweet]) -> Void) {
+        
+        var tweets = [Tweet]()
+        
+        DB.REF_TWEETS.observe(.childAdded) { snapShot in
+            
+            guard let dictionary = snapShot.value as? [String : Any] else {return}
+            
+            
+            let tweetID = snapShot.key //snapshot 의 ket 가 트윗의 id
+            
+            let tweet = Tweet(tweetID: tweetID, dictionary: dictionary)
+            tweets.append(tweet)
+            completion(tweets)
+        }
+    }
 }
