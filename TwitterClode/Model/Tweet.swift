@@ -19,9 +19,6 @@ struct Tweet {
     
     //body
     let caption: String
-
-
-
     
     
     init(tweetID: String, dictionary: [String : Any]) {

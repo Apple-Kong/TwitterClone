@@ -38,6 +38,7 @@
 		C089847427BE101100B95025 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C089847327BE101100B95025 /* Assets.xcassets */; };
 		C089847727BE2B8D00B95025 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C089847627BE2B8D00B95025 /* SnapKit */; };
 		C0D2156E27C3A4BF00434B6A /* Utillities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D2156D27C3A4BF00434B6A /* Utillities.swift */; };
+		C0E78C8427CBC37800F93C98 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E78C8327CBC37800F93C98 /* TweetCell.swift */; };
 		C0EFC0BF27CA705400DB1505 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EFC0BE27CA705400DB1505 /* Tweet.swift */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +89,7 @@
 		C089847127BE0E8500B95025 /* ExploreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreController.swift; sourceTree = "<group>"; };
 		C089847327BE101100B95025 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../Downloads/Assets.xcassets; sourceTree = "<group>"; };
 		C0D2156D27C3A4BF00434B6A /* Utillities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utillities.swift; sourceTree = "<group>"; };
+		C0E78C8327CBC37800F93C98 /* TweetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 		C0EFC0BE27CA705400DB1505 /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -224,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				C04F344927C7B6B50063DAA8 /* CaptionTextView.swift */,
+				C0E78C8327CBC37800F93C98 /* TweetCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				C0D2156E27C3A4BF00434B6A /* Utillities.swift in Sources */,
 				C089847227BE0E8500B95025 /* ExploreController.swift in Sources */,
 				C000B08727C4CC68003F01D9 /* Constant.swift in Sources */,
+				C0E78C8427CBC37800F93C98 /* TweetCell.swift in Sources */,
 				C089847027BE0E0A00B95025 /* ConversationController.swift in Sources */,
 				C04F344127C7649B0063DAA8 /* UserService.swift in Sources */,
 				C089843627BE0ADB00B95025 /* SceneDelegate.swift in Sources */,

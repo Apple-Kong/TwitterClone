@@ -10,7 +10,11 @@ import UIKit
 import SnapKit
 import SDWebImage
 
-class FeedController: UIViewController {
+private let reuseIdentifier = "TweetCell"
+
+
+//UICollectionViewController 사용
+class FeedController: UICollectionViewController {
     // MARK: - Properities
     
     var user: User? {
@@ -42,12 +46,19 @@ class FeedController: UIViewController {
     func configureUI() {
         view.backgroundColor = .white
         
+        
+        
         let imageView = UIImageView(image: UIImage(named: "twitter_logo_blue"))
         imageView.contentMode = .scaleAspectFit
         imageView.snp.makeConstraints { make in
             make.size.equalTo(44)
         }
         navigationItem.titleView = imageView
+        
+        
+        //컬렉션 뷰
+        collectionView.register(TweetCell.self, forCellWithReuseIdentifier: "TweetCell")
+        collectionView.backgroundColor  = .white
     }
     
     func configureLeftBarButton() {
@@ -64,6 +75,32 @@ class FeedController: UIViewController {
         
         profileImageView.sd_setImage(with: user.profileImageUrl, completed: nil)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileImageView)
+    }
+}
+
+extension FeedController  {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        
+        
+        return cell
+    }
+}
+
+
+//컬렉션 뷰의 아이템 사이즈 , 아이템간 스페이싱 조절,
+extension FeedController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        
+        
+        //다이나믹하게 셀 사이즈를 조절해야함.
+        return CGSize(width: view.frame.width, height: 200)
+        
     }
 }
 

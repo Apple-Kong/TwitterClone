@@ -27,16 +27,13 @@ struct TweetService {
     
     
     func fetchTweets(completion: @escaping ([Tweet]) -> Void) {
-        
         var tweets = [Tweet]()
         
+        //.childAdded 란? 데이터베이스의 하위 구조에 리스너를 추가. 데이터가 업데이트 되면 자동으로 추가적인 데이터를 가져옴.
         DB.REF_TWEETS.observe(.childAdded) { snapShot in
             
             guard let dictionary = snapShot.value as? [String : Any] else {return}
-            
-            
             let tweetID = snapShot.key //snapshot 의 ket 가 트윗의 id
-            
             let tweet = Tweet(tweetID: tweetID, dictionary: dictionary)
             tweets.append(tweet)
             completion(tweets)
