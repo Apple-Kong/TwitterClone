@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol TweetCellDelegate: class {
+    func handleProfileImageTapped(_ cell: TweetCell)
+}
+
 class TweetCell: UICollectionViewCell {
     
     // MARK: - Properties
@@ -17,7 +21,14 @@ class TweetCell: UICollectionViewCell {
         didSet { configure() }
     }
     
-    private let profileImageView : UIImageView = {
+    //retain cycle 문제 떄문에 weak 사용해야함.
+    // FeedController 가 TweetCell 을 소유
+    // 하지만 TweetCell 이 FeedController 를 참조하게 된다면??
+    // 참조 루프문제가 생김 이렇게 되면 서로가 서로를 참조하기 때문에 메모리 관리문제가 발생 메모리 상에서 지워지지 않고 낭비됨
+    weak var delegate: TweetCellDelegate?
+    
+    //lazy var 로 선언해주어야 selector 가 제대로 작동함.
+    private lazy var profileImageView : UIImageView = {
        let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
@@ -26,6 +37,10 @@ class TweetCell: UICollectionViewCell {
             make.size.equalTo(48)
         }
         iv.layer.cornerRadius = 48 / 2
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileImageTapped))
+        iv.addGestureRecognizer(tap)
+        iv.isUserInteractionEnabled = true
         return iv
     }()
     
@@ -97,6 +112,10 @@ class TweetCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     // MARK: - Selectors
+    @objc func handleProfileImageTapped() {
+        self.delegate?.handleProfileImageTapped(self)
+    }
+    
     @objc func commentButtonTapped() {
         
     }
