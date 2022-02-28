@@ -99,7 +99,7 @@ extension FeedController: UICollectionViewDelegateFlowLayout {
         
         
         //다이나믹하게 셀 사이즈를 조절해야함.
-        return CGSize(width: view.frame.width, height: 200)
+        return CGSize(width: view.frame.width, height: 120)
         
     }
 }
