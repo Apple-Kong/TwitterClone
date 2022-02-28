@@ -34,11 +34,11 @@ struct TweetService {
             
             guard let dictionary = snapShot.value as? [String : Any] else {return}
             guard let uid = dictionary["uid"] as? String else { return }
+            let tweetID = snapShot.key //snapshot 의 ket 가 트윗의 id
             
             
             
             UserService.shared.fetchUser(withUID: uid) { user in
-                let tweetID = snapShot.key //snapshot 의 ket 가 트윗의 id
                 let tweet = Tweet(user: user , tweetID: tweetID, dictionary: dictionary)
                 tweets.append(tweet)
                 completion(tweets)

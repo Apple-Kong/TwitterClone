@@ -49,9 +49,7 @@ class FeedController: UICollectionViewController {
         }
     }
     
-    func fetchUserInfo(withUID uid : String, completion: @escaping (User) -> Void) {
-        UserService.shared.fetchUser(withUID: uid, completion: completion)
-    }
+
     
     
     // MARK: - Helpers

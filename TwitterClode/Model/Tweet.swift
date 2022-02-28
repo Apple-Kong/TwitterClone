@@ -30,13 +30,11 @@ struct Tweet {
         self.tweetID = tweetID
         self.user = user
 
-
         self.retweetCount = dictionary["retweets"] as? Int ?? 0
         self.likes = dictionary["likes"] as? Int ?? 0
         if let timestamp = dictionary["timestamp"] as? Double {
             self.timestamp = Date(timeIntervalSince1970: timestamp)
         }
-        
         
         self.caption = dictionary["caption"] as? String ?? ""
     }

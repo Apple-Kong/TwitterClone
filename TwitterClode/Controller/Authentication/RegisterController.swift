@@ -112,7 +112,7 @@ class RegisterController: UIViewController {
         guard let email = emailTextFeild.text else { return }
         guard let password = passwordTextFeild.text else { return }
         guard let fullName = fullNameTextFeild.text else { return }
-        guard let userName = userNameTextFeild.text else { return }
+        guard let userName = userNameTextFeild.text?.lowercased() else { return }
         
         let credentials = AuthCredentials(email: email, password: password, fullName: fullName, userName: userName, profileImage: profileImage)
         
