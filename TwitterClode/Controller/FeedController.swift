@@ -23,6 +23,15 @@ class FeedController: UICollectionViewController {
         }
     }
     
+    private var tweets = [Tweet]() {
+        
+        //트윗이 수정 될 때마다 컬렉션뷰를 리로드해주어야함
+        //collectionView 리로드 = delegate datasource 메서드 실행.
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    
     
     // MARK: - lifeCycles
 
@@ -36,8 +45,12 @@ class FeedController: UICollectionViewController {
     // MARK: - API
     func fetchTweets() {
         TweetService.shared.fetchTweets { tweets in
-            print(tweets)
+            self.tweets = tweets
         }
+    }
+    
+    func fetchUserInfo(withUID uid : String, completion: @escaping (User) -> Void) {
+        UserService.shared.fetchUser(withUID: uid, completion: completion)
     }
     
     
@@ -78,20 +91,25 @@ class FeedController: UICollectionViewController {
     }
 }
 
+
+// MARK: - UICollectionViewDelegate/DataSource
+//reloadData() 호출시 아래 메서드 재 호출
 extension FeedController  {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return tweets.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! TweetCell
         
+        cell.tweet = tweets[indexPath.row]
         
         return cell
     }
 }
 
 
+// MARK: - UICollectionViewDelegateFlowLayout
 //컬렉션 뷰의 아이템 사이즈 , 아이템간 스페이싱 조절,
 extension FeedController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

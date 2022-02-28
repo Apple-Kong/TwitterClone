@@ -11,6 +11,12 @@ class TweetCell: UICollectionViewCell {
     
     // MARK: - Properties
     
+    
+    //트윗 데이터가 건네와 지면 셀에 데이터를 연결해주는 함수 호출
+    var tweet: Tweet? {
+        didSet { configure() }
+    }
+    
     private let profileImageView : UIImageView = {
        let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
@@ -84,8 +90,6 @@ class TweetCell: UICollectionViewCell {
         super.init(frame: frame)
         
         configureUI()
-        
-        
     }
     
     
@@ -110,6 +114,13 @@ class TweetCell: UICollectionViewCell {
     }
     
     // MARK: - Helpers
+    func configure() {
+        guard let tweet = tweet else { return }
+        
+        captionLabel.text = tweet.caption
+        profileImageView.sd_setImage(with: tweet.user.profileImageUrl, completed: nil)
+        infoLabel.text = tweet.user.username + tweet.user.fullname
+    }
     
     func configureUI() {
         
@@ -117,8 +128,7 @@ class TweetCell: UICollectionViewCell {
         addSubview(profileImageView)
         profileImageView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(8)
-            make.leading.equalToSuperview().offset(8
-            )
+            make.leading.equalToSuperview().offset(8)
         }
         
         

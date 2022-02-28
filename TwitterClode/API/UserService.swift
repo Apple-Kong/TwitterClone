@@ -25,4 +25,17 @@ struct UserService {
             completion(user)
         }
     }
+    
+    func fetchUser(withUID uid: String, completion: @escaping (User) -> Void) {
+        DB.REF_UESERS.child(uid).observeSingleEvent(of: .value) { snapshot in
+            print(snapshot)
+            guard let dic = snapshot.value as? [String : AnyObject] else { return }
+            guard let username = dic["username"] as? String else {return}
+            print(username)
+            
+            let user = User(uid: uid, dictionary: dic)
+            
+            completion(user)
+        }
+    }
 }

@@ -17,15 +17,18 @@ struct Tweet {
     let retweetCount: Int
     let likes: Int
     
+    //user
+    let user: User
+    
     //body
     let caption: String
     
     
-    init(tweetID: String, dictionary: [String : Any]) {
+    init(user: User, tweetID: String, dictionary: [String : Any]) {
         
         self.uid = dictionary["uid"] as? String ?? ""
         self.tweetID = tweetID
-        
+        self.user = user
 
 
         self.retweetCount = dictionary["retweets"] as? Int ?? 0
