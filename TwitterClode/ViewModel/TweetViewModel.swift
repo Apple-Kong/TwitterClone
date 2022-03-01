@@ -11,7 +11,9 @@ import UIKit
 
 struct TweetViewModel {
     
-    //model 소유
+    //MARK: - Properties
+    
+    //model 보유
     let tweet: Tweet
     var user: User
     
@@ -21,12 +23,17 @@ struct TweetViewModel {
     }
     
     
-    //MARK: - 앱의 비즈니스 로직들
+    //MARK: - 비즈니스 로직
+    
+    // 프로필 이미지 URL 뿌려주기
     var profileImageUrl: URL? {
         return tweet.user.profileImageUrl
     }
     
+    // 몇 초 전, 며칠전, 몇 주전 데이터 뿌려주기
     var timeStamp: String {
+        
+        
         let formatter = DateComponentsFormatter()
         
         formatter.allowedUnits = [.second, .minute, .hour, .day, .weekOfMonth]
@@ -36,10 +43,16 @@ struct TweetViewModel {
         return formatter.string(from: tweet.timestamp!, to: now) ?? ""
     }
     
+    
+    // 사용자 정보 텍스트 뿌려주기
     var userInfoText: NSAttributedString {
-        let title = NSMutableAttributedString(string: user.fullname, attributes: [.font: UIFont.boldSystemFont(ofSize: 14)])
         
-        title.append(NSAttributedString(string: " @\(user.username)・\(timeStamp)", attributes: [.font: UIFont.systemFont(ofSize: 14), .foregroundColor: UIColor.lightGray]))
+        let title = NSMutableAttributedString(string: user.fullname,
+                                              attributes: [.font: UIFont.boldSystemFont(ofSize: 14)])
+        let info = NSAttributedString(string: " @\(user.username)・\(timeStamp)",
+                                      attributes: [.font: UIFont.systemFont(ofSize: 14),
+                                                   .foregroundColor: UIColor.lightGray])
+        title.append(info)
         return title
     }
 }
