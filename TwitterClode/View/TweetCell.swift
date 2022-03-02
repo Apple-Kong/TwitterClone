@@ -133,6 +133,8 @@ class TweetCell: UICollectionViewCell {
     }
     
     // MARK: - Helpers
+    
+    // UI에 데이터 뿌려주기
     func configure() {
         guard let tweet = tweet else { return }
         
@@ -146,9 +148,11 @@ class TweetCell: UICollectionViewCell {
         
     }
     
+    // UI Frame 구성하기
     func configureUI() {
         
         
+        //프로필 이미지
         addSubview(profileImageView)
         profileImageView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(8)
@@ -156,7 +160,7 @@ class TweetCell: UICollectionViewCell {
         }
         
         
-        
+        //텍스트
         let stack = UIStackView(arrangedSubviews: [infoLabel, captionLabel])
         stack.axis = .vertical
         stack.distribution = .fillProportionally
@@ -175,6 +179,7 @@ class TweetCell: UICollectionViewCell {
         infoLabel.font = .systemFont(ofSize: 14)
         
         
+        // cell seperator
         let underlineView = UIView()
         underlineView.backgroundColor = .systemGroupedBackground
         addSubview(underlineView)
@@ -183,7 +188,7 @@ class TweetCell: UICollectionViewCell {
             make.height.equalTo(1)
         }
         
-        
+        // 액션 버튼들
         let actionStack = UIStackView(arrangedSubviews: [commentButton, retweetButton, likeButton, shareButton])
         actionStack.axis = .horizontal
         actionStack.distribution = .fillEqually

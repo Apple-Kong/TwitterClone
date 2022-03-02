@@ -16,6 +16,7 @@
 		C013CB9527C391C4009CAB28 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013CB9427C391C4009CAB28 /* UIColor.swift */; };
 		C013CB9827C398CB009CAB28 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013CB9727C398CB009CAB28 /* LoginController.swift */; };
 		C013CB9A27C3992F009CAB28 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013CB9927C3992F009CAB28 /* RegisterController.swift */; };
+		C03DC55127CF6C0E0031F624 /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03DC55027CF6C0E0031F624 /* ProfileHeader.swift */; };
 		C04F344127C7649B0063DAA8 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04F344027C7649B0063DAA8 /* UserService.swift */; };
 		C04F344327C769050063DAA8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04F344227C769050063DAA8 /* User.swift */; };
 		C04F344627C76DF60063DAA8 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = C04F344527C76DF60063DAA8 /* SDWebImage */; };
@@ -67,6 +68,7 @@
 		C013CB9427C391C4009CAB28 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		C013CB9727C398CB009CAB28 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		C013CB9927C3992F009CAB28 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
+		C03DC55027CF6C0E0031F624 /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
 		C04F344027C7649B0063DAA8 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		C04F344227C769050063DAA8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C04F344727C7B0B30063DAA8 /* UploadTweetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadTweetController.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 			children = (
 				C04F344927C7B6B50063DAA8 /* CaptionTextView.swift */,
 				C0E78C8327CBC37800F93C98 /* TweetCell.swift */,
+				C03DC55027CF6C0E0031F624 /* ProfileHeader.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 				C04F344827C7B0B30063DAA8 /* UploadTweetController.swift in Sources */,
 				C04F344327C769050063DAA8 /* User.swift in Sources */,
 				C04F344A27C7B6B50063DAA8 /* CaptionTextView.swift in Sources */,
+				C03DC55127CF6C0E0031F624 /* ProfileHeader.swift in Sources */,
 				C089846C27BE0D4E00B95025 /* FeedController.swift in Sources */,
 				C054355027CCCA6000D0D1BB /* ProfileController.swift in Sources */,
 				C013CB9527C391C4009CAB28 /* UIColor.swift in Sources */,
