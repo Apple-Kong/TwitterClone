@@ -71,7 +71,8 @@ class ProfileHeader: UICollectionReusableView {
     
     private let fullNameLabel: UILabel = {
        let label = UILabel()
-        label.font = .systemFont(ofSize: 16)
+        label.font = .boldSystemFont(ofSize: 18)
+        label.text = "Full Name"
         return label
     }()
     
@@ -79,6 +80,7 @@ class ProfileHeader: UICollectionReusableView {
        let label = UILabel()
         label.font = .systemFont(ofSize: 16)
         label.textColor = .lightGray
+        label.text = "@userName"
         return label
     }()
     
@@ -89,6 +91,9 @@ class ProfileHeader: UICollectionReusableView {
         label.text = "This is a user bio that will span more than one line for test purposes"
         return label
     }()
+    
+    private let filterBar = ProfileFilterView()
+    
     // MARK: - Lifecycle
     
     override init(frame: CGRect) {
@@ -111,6 +116,7 @@ class ProfileHeader: UICollectionReusableView {
     @objc func handleEditFollowProfile() {
         print("DEBUG: handle Edit Profile...")
     }
+    
     // MARK: - Helpers
     func configure() {
         addSubview(containerView)
@@ -130,6 +136,27 @@ class ProfileHeader: UICollectionReusableView {
         editFollowButton.snp.makeConstraints { make in
             make.top.equalTo(containerView.snp.bottom).offset(12)
             make.trailing.equalToSuperview().offset(-12)
+        }
+        
+        
+        let userDetailStack = UIStackView(arrangedSubviews: [fullNameLabel, userNameLabel, bioLabel])
+        userDetailStack.axis = .vertical
+        userDetailStack.distribution = .fillProportionally
+
+        
+        
+        addSubview(userDetailStack)
+        userDetailStack.snp.makeConstraints { make in
+            make.top.equalTo(profileImageView.snp.bottom).offset(8)
+            make.leading.equalToSuperview().offset(12)
+            make.trailing.equalToSuperview().offset(-12)
+            make.height.equalTo(100)
+        }
+        
+        addSubview(filterBar)
+        filterBar.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalToSuperview()
+            make.height.equalTo(50)
         }
     }
 }
