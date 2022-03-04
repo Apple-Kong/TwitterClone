@@ -19,7 +19,6 @@ class RegisterController: UIViewController {
     private let plusPhotoButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "plus_photo"), for: .normal)
-        
         button.tintColor = .white
         button.addTarget(self, action: #selector(handleAddProfilePhoto), for: .touchUpInside)
         return button
@@ -55,22 +54,26 @@ class RegisterController: UIViewController {
     
     private let emailTextFeild: UITextField = {
         let tf = Utillities().textFeild(withPlaceHolder: "Email")
+        tf.addDoneButtonOnKeyboard()
         return tf
     }()
     
     private let passwordTextFeild: UITextField = {
         let tf = Utillities().textFeild(withPlaceHolder: "Password")
+        tf.addDoneButtonOnKeyboard()
         tf.isSecureTextEntry = true
         return tf
     }()
     
     private let fullNameTextFeild: UITextField = {
         let tf = Utillities().textFeild(withPlaceHolder: "Full Name")
+        tf.addDoneButtonOnKeyboard()
         return tf
     }()
     
     private let userNameTextFeild: UITextField = {
         let tf = Utillities().textFeild(withPlaceHolder: "UserName")
+        tf.addDoneButtonOnKeyboard()
         return tf
     }()
     
@@ -102,6 +105,7 @@ class RegisterController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        dismissKeyboardWhenTappedAround()
     }
     // MARK: - Selectors
     @objc func handleSignUP() {

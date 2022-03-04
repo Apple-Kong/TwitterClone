@@ -54,6 +54,9 @@ extension ProfileFilterView: UICollectionViewDelegate, UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ProfileFilterCell
+        
+        let title = ["Tweets", "Tweets & Replies", "Likes"]
+        cell.titleLabel.text = title[indexPath.row]
         return cell
     }
 }

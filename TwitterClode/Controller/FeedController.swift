@@ -58,7 +58,6 @@ class FeedController: UICollectionViewController {
         view.backgroundColor = .white
         
         
-        
         let imageView = UIImageView(image: UIImage(named: "twitter_logo_blue"))
         imageView.contentMode = .scaleAspectFit
         imageView.snp.makeConstraints { make in
@@ -118,8 +117,7 @@ extension FeedController: TweetCellDelegate {
 //컬렉션 뷰의 아이템 사이즈 , 아이템간 스페이싱 조절,
 extension FeedController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        
+
         
         //다이나믹하게 셀 사이즈를 조절해야함.
         return CGSize(width: view.frame.width, height: 120)

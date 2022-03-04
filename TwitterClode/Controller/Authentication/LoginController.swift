@@ -42,11 +42,13 @@ class LoginController: UIViewController {
     // MARK: textfield 와 같이 실제로 ViewController 와 상호작용해야하는 경우는 함수레벨 사용 불가..
     private let emailTextFeild: UITextField = {
         let tf = Utillities().textFeild(withPlaceHolder: "Email")
+        tf.addDoneButtonOnKeyboard()
         return tf
     }()
     
     private let passwordTextFeild: UITextField = {
         let tf = Utillities().textFeild(withPlaceHolder: "Password")
+        tf.addDoneButtonOnKeyboard()
         tf.isSecureTextEntry = true
         return tf
     }()
@@ -75,6 +77,7 @@ class LoginController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        dismissKeyboardWhenTappedAround()
     }
     // MARK: - Selectors
     @objc func handleShowSignUp() {
