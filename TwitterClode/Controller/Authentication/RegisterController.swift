@@ -118,6 +118,11 @@ class RegisterController: UIViewController {
         guard let fullName = fullNameTextFeild.text else { return }
         guard let userName = userNameTextFeild.text?.lowercased() else { return }
         
+        
+        if password.count <= 5 {
+            presentAlert(title: "비밀번호는 6자리 이상이어야 합니다.")
+            return
+        }
         let credentials = AuthCredentials(email: email, password: password, fullName: fullName, userName: userName, profileImage: profileImage)
         
         AuthService.shared.registerUser(credentials: credentials) { error, ref in
