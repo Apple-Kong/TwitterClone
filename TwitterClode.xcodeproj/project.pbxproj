@@ -46,7 +46,6 @@
 		C0B544BD27D25E7D00F20D5E /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B544BC27D25E7D00F20D5E /* UIImage.swift */; };
 		C0B544BF27D25EEF00F20D5E /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B544BE27D25EEF00F20D5E /* UIViewController.swift */; };
 		C0B544C127D25F3B00F20D5E /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B544C027D25F3B00F20D5E /* IndicatorView.swift */; };
-		C0B544C327D25F7000F20D5E /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B544C227D25F7000F20D5E /* UIColor.swift */; };
 		C0D2156E27C3A4BF00434B6A /* Utillities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D2156D27C3A4BF00434B6A /* Utillities.swift */; };
 		C0E78C8427CBC37800F93C98 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E78C8327CBC37800F93C98 /* TweetCell.swift */; };
 		C0EFC0BF27CA705400DB1505 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EFC0BE27CA705400DB1505 /* Tweet.swift */; };
@@ -107,7 +106,6 @@
 		C0B544BC27D25E7D00F20D5E /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		C0B544BE27D25EEF00F20D5E /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		C0B544C027D25F3B00F20D5E /* IndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
-		C0B544C227D25F7000F20D5E /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColor.swift; path = ../../../../BGJTCloneApp/BGJTCloneApp/Util/Extension/UIColor.swift; sourceTree = "<group>"; };
 		C0D2156D27C3A4BF00434B6A /* Utillities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utillities.swift; sourceTree = "<group>"; };
 		C0E78C8327CBC37800F93C98 /* TweetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 		C0EFC0BE27CA705400DB1505 /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
@@ -285,7 +283,6 @@
 		C089847827BE2C4500B95025 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				C0B544C227D25F7000F20D5E /* UIColor.swift */,
 				C0B544BE27D25EEF00F20D5E /* UIViewController.swift */,
 				C0B544BA27D25E5400F20D5E /* UITextField.swift */,
 				C0B544BC27D25E7D00F20D5E /* UIImage.swift */,
@@ -460,7 +457,6 @@
 				C0EFC0BF27CA705400DB1505 /* Tweet.swift in Sources */,
 				C03DC55627CFB0FE0031F624 /* ProfileFilterCell.swift in Sources */,
 				C054354E27CCBE2400D0D1BB /* TweetViewModel.swift in Sources */,
-				C0B544C327D25F7000F20D5E /* UIColor.swift in Sources */,
 				C0D2156E27C3A4BF00434B6A /* Utillities.swift in Sources */,
 				C089847227BE0E8500B95025 /* ExploreController.swift in Sources */,
 				C000B08727C4CC68003F01D9 /* Constant.swift in Sources */,
