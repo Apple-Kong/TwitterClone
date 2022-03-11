@@ -32,6 +32,8 @@ class ProfileController: UICollectionViewController {
     
     
     //MARK: - Selectors
+    
+    
     //MARK: - Helpers
     func configureNavigationBar() {
         
@@ -41,6 +43,7 @@ class ProfileController: UICollectionViewController {
     }
     
     func configureCollectionView() {
+        //컬렉션 뷰 등록
         collectionView.contentInsetAdjustmentBehavior = .never
         collectionView.register(ProfileHeader.self,
                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
@@ -54,6 +57,7 @@ extension ProfileController: ProfileHeaderDelegate {
         self.navigationController?.popViewController(animated: true)
     }
 }
+
 
 
 //MARK: - UICollectionViewDataSource

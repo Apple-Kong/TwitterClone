@@ -9,7 +9,6 @@ import UIKit
 
 class LoginController: UIViewController {
     
-    
     // MARK: - Properities
     
     private let logoImageView: UIImageView = {
@@ -101,6 +100,8 @@ class LoginController: UIViewController {
     // MARK: - Helpers
     
     func goBackToMain() {
+        
+        // have to fix [ ]
         guard let window =  UIApplication.shared.windows.first(where: {$0.isKeyWindow}) else { return }
         guard let main = window.rootViewController as? MainTabController else { return }
         main.authenticateUserAndConfigureUI()

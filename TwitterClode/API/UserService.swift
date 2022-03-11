@@ -16,6 +16,8 @@ struct UserService {
         
         DB.REF_UESERS.child(uid).observeSingleEvent(of: .value) { snapshot in
             print(snapshot)
+            
+            
             guard let dic = snapshot.value as? [String : AnyObject] else { return }
             guard let username = dic["username"] as? String else {return}
             print(username)
