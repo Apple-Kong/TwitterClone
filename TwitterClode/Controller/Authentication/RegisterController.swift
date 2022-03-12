@@ -109,6 +109,8 @@ class RegisterController: UIViewController {
     }
     // MARK: - Selectors
     @objc func handleSignUP() {
+        
+        //회원 가입 로직
         guard let profileImage = profileImage else {
             print("DEBUG: Please select a profile image...")
             return

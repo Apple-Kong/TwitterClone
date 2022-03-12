@@ -102,17 +102,20 @@ class LoginController: UIViewController {
     func goBackToMain() {
         
         // have to fix [ ]
-        guard let window =  UIApplication.shared.windows.first(where: {$0.isKeyWindow}) else { return }
+        guard let window =  UIApplication.shared.windows.first(where: {$0.isKeyWindow }) else { return }
         guard let main = window.rootViewController as? MainTabController else { return }
         main.authenticateUserAndConfigureUI()
         self.dismiss(animated: true, completion: nil)
     }
     
     func configureUI() {
+        
+        //view 초기 설정
         view.backgroundColor = .twitterBlue
         navigationController?.navigationBar.barStyle = .black
         navigationController?.navigationBar.isHidden = true
         
+        //로고 이미지
         view.addSubview(logoImageView)
         logoImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -120,10 +123,10 @@ class LoginController: UIViewController {
             make.size.equalTo(150)
         }
         
+        //텍스트 필드 스택뷰
         let stack = UIStackView(arrangedSubviews: [emailContainerView, passwordContainerView])
         stack.axis = .vertical
         stack.spacing = 30
-        
         view.addSubview(stack)
         stack.snp.makeConstraints { make in
             make.top.equalTo(logoImageView.snp.bottom)
@@ -133,15 +136,15 @@ class LoginController: UIViewController {
             make.height.equalTo(130)
         }
         
+        //로그인 뷰
         view.addSubview(loginButton)
-       
         loginButton.snp.makeConstraints { make in
             make.leading.trailing.equalTo(stack)
             make.top.equalTo(stack.snp.bottom).offset(20)
             make.height.equalTo(50)
         }
         
-        
+        //회원가입 버튼
         view.addSubview(signUpButton)
         signUpButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -151,8 +154,9 @@ class LoginController: UIViewController {
 }
 
 
-import SwiftUI
 
+
+import SwiftUI
 struct LoginControllerRepresentable: UIViewControllerRepresentable {
     typealias UIViewControllerType = LoginController
 
@@ -163,7 +167,6 @@ struct LoginControllerRepresentable: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: LoginController, context: Context) {
     }
 }
-
 @available(iOS 13.0.0, *)
 struct LoginControllerPreview: PreviewProvider {
     static var previews: some View {
