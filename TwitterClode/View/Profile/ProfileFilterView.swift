@@ -10,8 +10,14 @@ import SnapKit
 
 private let reuseIdentifier = "ProfileFilterCell"
 
+protocol ProfileFitlerViewDelegate: class {
+    func filterView(_ view: ProfileFilterView, didSelect indexPath: IndexPath)
+}
+
 class ProfileFilterView: UIView {
     // MARK: - Properties
+    
+    weak var delegate: ProfileFitlerViewDelegate?
     
     lazy var collectionView: UICollectionView = {
        let layout = UICollectionViewFlowLayout()
@@ -58,6 +64,10 @@ extension ProfileFilterView: UICollectionViewDelegate, UICollectionViewDataSourc
         let title = ["Tweets", "Tweets & Replies", "Likes"]
         cell.titleLabel.text = title[indexPath.row]
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.filterView(self, didSelect: indexPath)
     }
 }
 

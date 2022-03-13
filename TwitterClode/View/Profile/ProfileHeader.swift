@@ -94,10 +94,18 @@ class ProfileHeader: UICollectionReusableView {
     
     private let filterBar = ProfileFilterView()
     
+    private let underlineView: UIView = {
+       let view = UIView()
+        view.backgroundColor = .twitterBlue
+        return view
+    }()
+    
     // MARK: - Lifecycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        filterBar.delegate = self
         
         configure()
     }
@@ -157,6 +165,30 @@ class ProfileHeader: UICollectionReusableView {
         filterBar.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
             make.height.equalTo(50)
+        }
+        
+        addSubview(underlineView)
+        underlineView.snp.makeConstraints { make in
+            make.bottom.equalToSuperview()
+            make.width.equalTo(frame.width / 3)
+            make.height.equalTo(2)
+            make.leading.equalToSuperview()
+        }
+    }
+}
+
+
+extension ProfileHeader: ProfileFitlerViewDelegate {
+    func filterView(_ view: ProfileFilterView, didSelect indexPath: IndexPath) {
+        
+        
+        guard let cell = view.collectionView.cellForItem(at: indexPath) as? ProfileFilterCell else {
+            return
+        }
+        
+        let xPosition = cell.frame.origin.x
+        UIView.animate(withDuration: 0.3) {
+            self.underlineView.frame.origin.x = xPosition
         }
     }
 }
