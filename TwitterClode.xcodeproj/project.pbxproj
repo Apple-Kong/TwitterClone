@@ -46,6 +46,7 @@
 		C0B544BF27D25EEF00F20D5E /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B544BE27D25EEF00F20D5E /* UIViewController.swift */; };
 		C0B544C127D25F3B00F20D5E /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B544C027D25F3B00F20D5E /* IndicatorView.swift */; };
 		C0B736D127DCEBFA009DAA99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0B736D027DCEBFA009DAA99 /* Assets.xcassets */; };
+		C0B8271827DDBC770027812A /* ProfileHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B8271727DDBC770027812A /* ProfileHeaderViewModel.swift */; };
 		C0D2156E27C3A4BF00434B6A /* Utillities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D2156D27C3A4BF00434B6A /* Utillities.swift */; };
 		C0E78C8427CBC37800F93C98 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E78C8327CBC37800F93C98 /* TweetCell.swift */; };
 		C0EFC0BF27CA705400DB1505 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EFC0BE27CA705400DB1505 /* Tweet.swift */; };
@@ -106,6 +107,7 @@
 		C0B544BE27D25EEF00F20D5E /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		C0B544C027D25F3B00F20D5E /* IndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
 		C0B736D027DCEBFA009DAA99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C0B8271727DDBC770027812A /* ProfileHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewModel.swift; sourceTree = "<group>"; };
 		C0D2156D27C3A4BF00434B6A /* Utillities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utillities.swift; sourceTree = "<group>"; };
 		C0E78C8327CBC37800F93C98 /* TweetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 		C0EFC0BE27CA705400DB1505 /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				C054354D27CCBE2400D0D1BB /* TweetViewModel.swift */,
+				C0B8271727DDBC770027812A /* ProfileHeaderViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -443,6 +446,7 @@
 				C0B544C127D25F3B00F20D5E /* IndicatorView.swift in Sources */,
 				C089843827BE0ADB00B95025 /* ViewController.swift in Sources */,
 				C013CB9A27C3992F009CAB28 /* RegisterController.swift in Sources */,
+				C0B8271827DDBC770027812A /* ProfileHeaderViewModel.swift in Sources */,
 				C089843427BE0ADB00B95025 /* AppDelegate.swift in Sources */,
 				C04F344827C7B0B30063DAA8 /* UploadTweetController.swift in Sources */,
 				C04F344327C769050063DAA8 /* User.swift in Sources */,
