@@ -165,13 +165,17 @@ class ProfileHeader: UICollectionReusableView {
     func configure() {
         guard let user = user else { return }
         
-        fullNameLabel.text = user.fullname
-        userNameLabel.text = user.username
         profileImageView.sd_setImage(with: user.profileImageUrl, completed: nil)
         
+        fullNameLabel.text = user.fullname
+        userNameLabel.text = user.username
+        
+        
         let viewModel = ProfileHeaderViewModel(user: user)
+        editFollowButton.setTitle(viewModel.actionButtonTitle, for: .normal)
         followersLabel.attributedText = viewModel.followersString
         followingLabel.attributedText = viewModel.followingString
+        
     }
     
     func configureUI() {

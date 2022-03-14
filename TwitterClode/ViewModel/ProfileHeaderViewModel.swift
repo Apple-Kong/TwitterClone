@@ -39,14 +39,14 @@ struct ProfileHeaderViewModel {
         return attributedText(withValue: 0, text: "followers")
     }
     
-//    var actionButtonTitle: String {
-//        if user.isCurrentUser {
-//
-//        } else {
-//
-//        }
-//    }
-//
+    var actionButtonTitle: String {
+        if user.isCurrentUser {
+            return "Edit Profile"
+        } else {
+            return "Follow"
+        }
+    }
+
 
     
     init(user: User) {
