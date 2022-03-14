@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Firebase
 
 
 struct User {
@@ -14,6 +15,8 @@ struct User {
     let fullname: String
     var profileImageUrl: URL?
     let username: String
+    
+    var isCurrentUser: Bool { return Auth.auth().currentUser?.uid == uid }
     
     //struct 로 파싱하는 생성자 직접 작성해야함.
     //그리고 이런 메서드는 Model 로 빼야함.

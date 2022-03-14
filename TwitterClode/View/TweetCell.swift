@@ -9,6 +9,8 @@ import UIKit
 
 protocol TweetCellDelegate: class {
     func handleProfileImageTapped(_ cell: TweetCell)
+    
+    
 }
 
 class TweetCell: UICollectionViewCell {
@@ -114,6 +116,7 @@ class TweetCell: UICollectionViewCell {
     // MARK: - Selectors
     @objc func handleProfileImageTapped() {
         self.delegate?.handleProfileImageTapped(self)
+        
     }
     
     @objc func commentButtonTapped() {

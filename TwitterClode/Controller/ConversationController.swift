@@ -28,10 +28,7 @@ class ConversationController: UIViewController {
 }
 
 
-
-
 import SwiftUI
-
 struct ConversationControllerRepresentable: UIViewControllerRepresentable {
     typealias UIViewControllerType = ConversationController
 
@@ -42,7 +39,6 @@ struct ConversationControllerRepresentable: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: ConversationController, context: Context) {
     }
 }
-
 @available(iOS 13.0.0, *)
 struct ConversationControllerPreview: PreviewProvider {
     static var previews: some View {

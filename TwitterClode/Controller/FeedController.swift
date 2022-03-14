@@ -107,7 +107,8 @@ extension FeedController  {
 //MARK: - TweetCellDelegate
 extension FeedController: TweetCellDelegate {
     func handleProfileImageTapped(_ cell: TweetCell) {
-        let vc = ProfileController(collectionViewLayout: UICollectionViewFlowLayout())
+        guard let user = cell.tweet?.user else { return }
+        let vc = ProfileController(user: user)
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -140,7 +141,6 @@ struct FeedControllerRepresentable: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: FeedController, context: Context) {
     }
 }
-
 @available(iOS 13.0.0, *)
 struct FeedControllerPreview: PreviewProvider {
     static var previews: some View {

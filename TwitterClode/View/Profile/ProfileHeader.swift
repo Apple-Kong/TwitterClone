@@ -14,6 +14,10 @@ protocol ProfileHeaderDelegate {
 class ProfileHeader: UICollectionReusableView {
     // MARK: - Properties
     
+    var user: User? {
+        didSet { configure() }
+    }
+    
     var delegate: ProfileHeaderDelegate?
     
     private lazy var containerView: UIView = {
@@ -44,6 +48,8 @@ class ProfileHeader: UICollectionReusableView {
         }
         iv.backgroundColor = .twitterBlue
         iv.layer.cornerRadius = 80 / 2
+        iv.contentMode  = .scaleAspectFill
+        iv.clipsToBounds = true
         iv.layer.borderColor = UIColor.white.cgColor
         iv.layer.borderWidth = 4
         
@@ -92,6 +98,28 @@ class ProfileHeader: UICollectionReusableView {
         return label
     }()
     
+    private let followingLabel: UILabel = {
+        let label = UILabel()
+
+        
+        let followTap = UITapGestureRecognizer(target: self, action: #selector(handleFollowingTapped))
+        label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(followTap)
+        return label
+    }()
+    
+    private let followersLabel: UILabel = {
+        let label = UILabel()
+
+        
+        let followTap = UITapGestureRecognizer(target: self, action: #selector(handleFollowersTapped))
+        label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(followTap)
+        return label
+    }()
+    
+
+    
     private let filterBar = ProfileFilterView()
     
     private let underlineView: UIView = {
@@ -107,7 +135,7 @@ class ProfileHeader: UICollectionReusableView {
         
         filterBar.delegate = self
         
-        configure()
+        configureUI()
     }
     
     required init?(coder: NSCoder) {
@@ -125,8 +153,28 @@ class ProfileHeader: UICollectionReusableView {
         print("DEBUG: handle Edit Profile...")
     }
     
+    @objc func handleFollowersTapped() {
+        print("DEBUG: handle Followers Tap")
+    }
+    
+    @objc func handleFollowingTapped() {
+        print("DEBUG: handle Followers Tap")
+    }
+    
     // MARK: - Helpers
     func configure() {
+        guard let user = user else { return }
+        
+        fullNameLabel.text = user.fullname
+        userNameLabel.text = user.username
+        profileImageView.sd_setImage(with: user.profileImageUrl, completed: nil)
+        
+        let viewModel = ProfileHeaderViewModel(user: user)
+        followersLabel.attributedText = viewModel.followersString
+        followingLabel.attributedText = viewModel.followingString
+    }
+    
+    func configureUI() {
         addSubview(containerView)
         containerView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
@@ -147,11 +195,11 @@ class ProfileHeader: UICollectionReusableView {
         }
         
         
+       
+        
         let userDetailStack = UIStackView(arrangedSubviews: [fullNameLabel, userNameLabel, bioLabel])
         userDetailStack.axis = .vertical
         userDetailStack.distribution = .fillProportionally
-
-        
         
         addSubview(userDetailStack)
         userDetailStack.snp.makeConstraints { make in
@@ -160,6 +208,18 @@ class ProfileHeader: UICollectionReusableView {
             make.trailing.equalToSuperview().offset(-12)
             make.height.equalTo(100)
         }
+        
+        let followStack = UIStackView(arrangedSubviews: [followingLabel, followersLabel])
+        followStack.axis = .horizontal
+        followStack.distribution = .fillProportionally
+        followStack.spacing = 8
+        
+        addSubview(followStack)
+        followStack.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(12)
+            make.top.equalTo(bioLabel.snp.bottom).offset(8)
+        }
+        
         
         addSubview(filterBar)
         filterBar.snp.makeConstraints { make in

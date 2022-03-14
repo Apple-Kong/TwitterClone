@@ -30,8 +30,8 @@ class ExploreController: UIViewController {
 
 
 
-import SwiftUI
 
+import SwiftUI
 struct ExploreControllerRepresentable: UIViewControllerRepresentable {
     typealias UIViewControllerType = ExploreController
 
@@ -42,7 +42,6 @@ struct ExploreControllerRepresentable: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: ExploreController, context: Context) {
     }
 }
-
 @available(iOS 13.0.0, *)
 struct ExploreControllerPreview: PreviewProvider {
     static var previews: some View {

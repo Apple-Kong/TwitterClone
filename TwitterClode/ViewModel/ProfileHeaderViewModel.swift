@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import UIKit
+import FirebaseAuth
 
 
 enum ProfileFilterOPtions: Int, CaseIterable {
@@ -22,3 +24,42 @@ enum ProfileFilterOPtions: Int, CaseIterable {
         }
     }
 }
+
+
+struct ProfileHeaderViewModel {
+    
+    
+    private let user: User
+    
+    var followingString: NSAttributedString? {
+        return attributedText(withValue: 2, text: "following")
+    }
+    
+    var followersString: NSAttributedString? {
+        return attributedText(withValue: 0, text: "followers")
+    }
+    
+//    var actionButtonTitle: String {
+//        if user.isCurrentUser {
+//
+//        } else {
+//
+//        }
+//    }
+//
+
+    
+    init(user: User) {
+        self.user = user
+    }
+    
+    private func attributedText(withValue value: Int, text: String) -> NSAttributedString {
+        let attributedTitle = NSMutableAttributedString(string: "\(value)", attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 14)])
+        attributedTitle.append(NSAttributedString(string: " \(text)", attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 14),
+                                                                                   NSAttributedString.Key.foregroundColor : UIColor.lightGray]))
+        
+        return attributedTitle
+    }
+}
+
+

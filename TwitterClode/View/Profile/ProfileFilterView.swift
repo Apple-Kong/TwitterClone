@@ -10,7 +10,7 @@ import SnapKit
 
 private let reuseIdentifier = "ProfileFilterCell"
 
-protocol ProfileFitlerViewDelegate: class {
+protocol ProfileFitlerViewDelegate: AnyObject {
     func filterView(_ view: ProfileFilterView, didSelect indexPath: IndexPath)
 }
 
